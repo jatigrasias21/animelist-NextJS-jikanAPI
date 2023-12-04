@@ -1,36 +1,14 @@
 import Image from "next/image"
 import VideoPlayer from "@/components/Utilities/VideoPlayer"
+import { getAnimeResponse } from "@/libs/api-libs"
 
-const { getAnimeResponse } = require("@/libs/api-libs")
+//const { getAnimeResponse } = require("@/libs/api-libs")
 
 const Page  = async ({ params : { id } }) => {
     const anime = await getAnimeResponse(`anime/${id}`)
 
     return (
         <>
-        
-        
-        {/**
-        <div className="pt-4 px-4 flex gap-2 text-color-primary overflow-x-auto">
-        <div className="w-36 flex flex-col justify-center items-center rounded border border-color-primary p-2">
-        <h3>Rank</h3>
-                <p>{anime.data.rank}</p>
-                </div>
-                <div className="w-36 flex flex-col justify-center items-center rounded border border-color-primary p-2">
-                <h3>Ratings</h3>
-                <p>{anime.data.score}</p>
-                </div>
-                <div className="w-36 flex flex-col justify-center items-center rounded border border-color-primary p-2">
-                <h3>Members</h3>
-                <p>{anime.data.members}</p>
-                </div>
-                <div className="w-36 flex flex-col justify-center items-center rounded border border-color-primary p-2">
-                <h3>Episodes</h3>
-                <p>{anime.data.episodes}</p>
-                </div>
-        </div>
-         */}
-
         <div className="grid grid-cols-2 p-8 gap-6">
         <div className="col-span-2 container p-4 rounded-xl bg-color-secondary flex sm:flex-nowrap flex-wrap md:gap-6 text-color-primary">                
             <Image
@@ -48,7 +26,7 @@ const Page  = async ({ params : { id } }) => {
                 </div>
 
                 <div className="p-8">
-                    <ul class="list-disc marker:text-color-accent">
+                    <ul className="list-disc marker:text-color-accent">
                         <li>Year : {anime.data.year}</li>
                         <li>Status : {anime.data.status}</li>
                         <li>Score : {anime.data.score}</li>
